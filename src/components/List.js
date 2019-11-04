@@ -1,13 +1,14 @@
 import React from 'react'
 import cn from 'classnames'
+import {inject, observer} from 'mobx-react'
 
 import './List.css'
 
-export default function List({todos, checkTodo, deleteTodo}) {
+function List({todos, checkTodo, deleteTodo}) {
   return (
     <ul className="List collection z-depth-5">
-      {todos.length ? (
-        todos.map(item => (
+      {todos.sortedTasks.length ? (
+        todos.sortedTasks.map(item => (
           <li key={item.id} className={cn('List-Item collection-item', {'List-Item_done': item.isDone})}>
             <p className="List-ItemText">{item.text}</p>
             <div className="List-ItemActions">
@@ -27,3 +28,5 @@ export default function List({todos, checkTodo, deleteTodo}) {
     </ul>
   )
 }
+
+export default inject('todos')(observer(List))

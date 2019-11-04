@@ -5,6 +5,8 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "materialize-css": "^1.0.0-rc.2",
+    "mobx": "^5.14.2",
+    "mobx-react": "^6.1.4",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0"
