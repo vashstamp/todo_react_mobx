@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {inject, observer} from 'mobx-react'
 import cn from 'classnames'
 
 import './Form.css'
@@ -7,14 +8,14 @@ const initialState = {
   value: '',
 }
 
-export default class Form extends Component {
+class Form extends Component {
   state = initialState
   inputRef = React.createRef()
 
   handleSubmit = e => {
     e.preventDefault()
     if (this.isSubmitActive()) {
-      this.props.addTodo(this.state.value.trim())
+      this.props.todos.addTodo(this.state.value.trim())
       this.setState(initialState)
     } else {
       this.inputRef.current.focus()
@@ -48,3 +49,5 @@ export default class Form extends Component {
     )
   }
 }
+
+export default inject('todos')(observer(Form))

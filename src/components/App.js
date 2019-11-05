@@ -1,4 +1,5 @@
-import * as React from 'react'
+import React from 'react'
+import DevTools from 'mobx-react-devtools'
 import {Provider} from 'mobx-react'
 
 import todos from '../mobx/todos'
@@ -12,14 +13,17 @@ const stores = {
 
 export default function App() {
   return (
-    <Provider {...stores}>
-      <div className="App">
-        <main className="App-Main">
-          <h1 className="App-Title">Todo list</h1>
-          <Form />
-          <List checkTodo={() => undefined} deleteTodo={() => undefined} />
-        </main>
-      </div>
-    </Provider>
+    <>
+      <DevTools />
+      <Provider {...stores}>
+        <div className="App">
+          <main className="App-Main">
+            <h1 className="App-Title">Todo list</h1>
+            <Form />
+            <List />
+          </main>
+        </div>
+      </Provider>
+    </>
   )
 }
